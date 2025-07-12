@@ -160,7 +160,7 @@ def main():
         os.chdir(src_path)
         subprocess.run([
             sys.executable, "-m", "chainlit", "run", 
-            "ui/chainlit_app.py",
+            "src/ui/chainlit_app.py",
             "--host", "0.0.0.0",
             "--port", "8000"
         ])

@@ -5,7 +5,7 @@ Handles user sessions, state management, and data persistence
 import asyncio
 import json
 import time
-from typing import Dict, Any, Optional
+from typing import Dict, Any, Optional, List
 from loguru import logger
 import redis.asyncio as redis
 

@@ -4,7 +4,7 @@ Configuration settings for Scholarship Advisor
 import os
 from typing import List, Optional
 from dotenv import load_dotenv
-
+from pathlib import Path
 # Load environment variables
 load_dotenv()
 
@@ -98,3 +98,14 @@ if missing_keys and not settings.DEBUG:
 dirs = settings.get_base_dirs()
 for dir_path in dirs.values():
     os.makedirs(dir_path, exist_ok=True)
+
+# Add this to create uploads/.gitkeep
+def ensure_uploads_directory():
+    upload_dir = Path("uploads")
+    upload_dir.mkdir(exist_ok=True)
+    gitkeep = upload_dir / ".gitkeep"
+    if not gitkeep.exists():
+        gitkeep.touch()
+
+# Call in settings initialization
+ensure_uploads_directory()

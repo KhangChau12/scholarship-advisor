@@ -7,6 +7,7 @@ import asyncio
 import json
 from typing import Dict, List, Any, Optional
 from loguru import logger
+from pathlib import Path
 
 from ..agents.coordinator import coordinator_agent
 from ..agents.scholarship_finder import scholarship_finder_agent
@@ -348,6 +349,19 @@ async def handle_email_collection(user_input: str, session: ScholarshipSession, 
             await progress_msg.update(content="❌ Có lỗi khi gửi email. Vui lòng thử lại sau.")
     else:
         await cl.Message(content="❌ Email không hợp lệ. Vui lòng nhập lại hoặc gõ 'skip' để bỏ qua.").send()
+
+@cl.on_chat_start
+async def setup_ui():
+    # Load custom CSS
+    css_path = Path(__file__).parent.parent.parent / "static" / "css" / "custom.css"
+    if css_path.exists():
+        with open(css_path, 'r', encoding='utf-8') as f:
+            css_content = f.read()
+        
+        await cl.Message(
+            content=f"<style>{css_content}</style>",
+            author="system"
+        ).send()
 
 # Custom styling
 @cl.on_chat_start
