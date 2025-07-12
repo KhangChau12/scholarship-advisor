@@ -24,8 +24,8 @@ class Settings:
     SENDGRID_API_KEY: str = os.getenv("SENDGRID_API_KEY", "")
     SENDGRID_FROM_EMAIL: str = os.getenv("SENDGRID_FROM_EMAIL", "")
     
-    # LLM Settings
-    LLM_MODEL: str = "Qwen/Qwen2.5-72B-Instruct"
+    # LLM Settings - Updated for Qwen2.5-72B-Instruct-Turbo
+    LLM_MODEL: str = "Qwen/Qwen2.5-72B-Instruct-Turbo"
     LLM_BASE_URL: str = "https://api.together.xyz/v1"
     MAX_TOKENS: int = 4096
     TEMPERATURE: float = 0.7
